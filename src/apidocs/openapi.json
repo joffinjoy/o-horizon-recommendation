@@ -1,0 +1,996 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "O-Horizon Recommendation APIs",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Joffin Joy",
+      "url": "https://www.linkedin.com/in/joffin-joy/"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3020"
+    }
+  ],
+  "paths": {
+    "/recommendation/add-user": {
+      "post": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "Add User to Recommendation Engine",
+        "description": "Add a user to the recommendation engine",
+        "operationId": "addUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "User's email address.",
+                    "example": "joffin@domain.com"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "User's name.",
+                    "example": "Joffin"
+                  },
+                  "phone": {
+                    "type": "string",
+                    "description": "User's phone number.",
+                    "example": "9895480000"
+                  },
+                  "userId": {
+                    "type": "string",
+                    "description": "User's unique identifier.",
+                    "example": "645a85062b761cd3326d21d3"
+                  }
+                }
+              },
+              "example": {
+                "email": "joffin@domain.com",
+                "name": "Joffin",
+                "phone": "9895480000",
+                "userId": "645a85062b761cd3326d21d3"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User Added To Recommendation Engine",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "description": "Indicates whether the user was successfully added.",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Success message indicating that the user was added.",
+                      "example": "User Added To Recommendation Engine"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "phone": {
+                          "type": "string",
+                          "description": "User's phone number.",
+                          "example": 9895480000
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "User's name.",
+                          "example": "Joffin"
+                        },
+                        "userId": {
+                          "type": "string",
+                          "description": "User's unique identifier.",
+                          "example": "645a85062b761cd3326d21d3"
+                        },
+                        "email": {
+                          "type": "string",
+                          "description": "User's email address.",
+                          "example": "joffin@domain.com"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recommendation/add-item": {
+      "post": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "Add Item To Recommendation Engine",
+        "description": "Add an item to recommendation engine",
+        "operationId": "addItem",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "payload": {
+                    "type": "object",
+                    "properties": {
+                      "categories": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "example": "645a858cac6cad8d2ddb89d1"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Infrastructure Management"
+                            }
+                          }
+                        },
+                        "example": [
+                          {
+                            "id": "645a858cac6cad8d2ddb89d1",
+                            "name": "Infrastructure Management"
+                          }
+                        ]
+                      },
+                      "item": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "645a857172060d45dc483e61"
+                          },
+                          "title": {
+                            "type": "string",
+                            "example": "Guide On School Infrastructure Development"
+                          }
+                        }
+                      },
+                      "mentor": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "645a855e9d9aecf7ff9f5eff"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Joffin"
+                          }
+                        }
+                      },
+                      "provider": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "645a8566cf956ed031352be1"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "ShikshaLokam"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "example": {
+                "payload": {
+                  "categories": [
+                    {
+                      "id": "645a858cac6cad8d2ddb89d1",
+                      "name": "Infrastructure Management"
+                    }
+                  ],
+                  "item": {
+                    "id": "645a857172060d45dc483e61",
+                    "title": "Guide On School Infrastructure Development"
+                  },
+                  "mentor": {
+                    "id": "645a855e9d9aecf7ff9f5eff",
+                    "name": "Joffin"
+                  },
+                  "provider": {
+                    "id": "645a8566cf956ed031352be1",
+                    "name": "ShikshaLokam"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Item Added To Recommendation Engine",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Item Added To Recommendation Engine"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "itemId": {
+                          "type": "string",
+                          "example": "645a857172060d45dc483e61"
+                        },
+                        "providerId": {
+                          "type": "string",
+                          "example": "645a8566cf956ed031352be1"
+                        },
+                        "mentorId": {
+                          "type": "string",
+                          "example": "645a855e9d9aecf7ff9f5eff"
+                        },
+                        "categoryIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": [
+                              "645a858cac6cad8d2ddb89d1"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recommendation/add-rating": {
+      "post": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "Add Rating To An Item",
+        "description": "Creates RATED relationship between user and item",
+        "operationId": "addRating",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "itemId": {
+                    "type": "string",
+                    "example": "645a857172060d45dc483e61"
+                  },
+                  "rating": {
+                    "type": "number",
+                    "example": 5
+                  },
+                  "userId": {
+                    "type": "string",
+                    "example": "645a85062b761cd3326d21d3"
+                  }
+                }
+              },
+              "example": {
+                "itemId": "645a857172060d45dc483e61",
+                "rating": 5,
+                "userId": "645a85062b761cd3326d21d3"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Rating Added To Recommendation Engine",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Rating Added To Recommendation Engine"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "item": {
+                          "type": "object",
+                          "properties": {
+                            "itemId": {
+                              "type": "string",
+                              "example": "645a857172060d45dc483e61"
+                            },
+                            "title": {
+                              "type": "string",
+                              "example": "Guide On School Infrastructure Development"
+                            }
+                          }
+                        },
+                        "user": {
+                          "type": "object",
+                          "properties": {
+                            "phone": {
+                              "type": "string",
+                              "example": 9895480000
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Joffin"
+                            },
+                            "userId": {
+                              "type": "string",
+                              "example": "645a85062b761cd3326d21d3"
+                            },
+                            "email": {
+                              "type": "string",
+                              "example": "joffin@domain.com"
+                            }
+                          }
+                        },
+                        "rated": {
+                          "type": "object",
+                          "properties": {
+                            "rating": {
+                              "type": "object",
+                              "properties": {
+                                "low": {
+                                  "type": "number",
+                                  "example": 5
+                                },
+                                "high": {
+                                  "type": "number",
+                                  "example": 0
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recommendation/get-user-emails": {
+      "get": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "Get All User Email Ids",
+        "description": "Fetches all user email Ids and userIds",
+        "operationId": "getEmailIds",
+        "responses": {
+          "200": {
+            "description": "All User Emails Fetched Successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "All User Emails Fetched Successfully"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "emailId": {
+                            "type": "string",
+                            "example": "angeloschuster6@shikshalokam.org"
+                          },
+                          "userId": {
+                            "type": "string",
+                            "example": "645a868e23f01175b674bf37"
+                          }
+                        },
+                        "required": [
+                          "emailId",
+                          "userId"
+                        ]
+                      },
+                      "example": [
+                        {
+                          "emailId": "angeloschuster6@shikshalokam.org",
+                          "userId": "645a868e23f01175b674bf37"
+                        },
+                        {
+                          "emailId": "shawntillmaniv8@shikshalokam.org",
+                          "userId": "645a868ebb131bd2c19fb0ff"
+                        },
+                        {
+                          "emailId": "katiewillms3@shikshalokam.org",
+                          "userId": "645a868eb59cccfe42d3fad9"
+                        },
+                        {
+                          "emailId": "tamishanahan4@shikshalokam.org",
+                          "userId": "645a868e51dbcd523915815f"
+                        },
+                        {
+                          "emailId": "audreyparisian1@shikshalokam.org",
+                          "userId": "645a868e8c0f16173e4b0f00"
+                        },
+                        {
+                          "emailId": "tiffanyward9@shikshalokam.org",
+                          "userId": "645a868e84760dbe3420a156"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recommendation/recompute-collaborative-similarity": {
+      "get": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "Recompute Collaborative Similarity",
+        "description": "Recompute the collaborative filtering similarities using FRP & KNN",
+        "operationId": "recomputeCollaborativeSimilarity",
+        "responses": {
+          "200": {
+            "description": "Collaborative Filtering Recomputed Successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Collaborative Filtering Recomputed Successfully"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recommendation/get-collaborative-recommendations": {
+      "post": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "Get collaborative Recommendations",
+        "description": "Get item recommendations for a user based on their similarities with other users (Collaborative Filtering)",
+        "operationId": "getCollaborativeRecommendations",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string",
+                    "example": "645a30763153bfd734ceebb0"
+                  }
+                }
+              },
+              "example": {
+                "userId": "645a30763153bfd734ceebb0"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Recommendations successfully retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Recommendations For User: 645a30763153bfd734ceebb0 Retrieved"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "itemId": {
+                            "type": "string",
+                            "example": "645a868e0b03a39d412c8ada"
+                          },
+                          "title": {
+                            "type": "string",
+                            "example": "Enhancing Student Learning through Peer Feedback ClusterNumber7"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "example": {
+                    "status": true,
+                    "message": "Recommendations For User: 645a30763153bfd734ceebb0 Retrieved",
+                    "data": [
+                      {
+                        "itemId": "645a868e0b03a39d412c8ada",
+                        "title": "Enhancing Student Learning through Peer Feedback ClusterNumber7"
+                      },
+                      {
+                        "itemId": "645a868eba244d094e865993",
+                        "title": "Effective Approaches to Differentiated Learning ClusterNumber7"
+                      },
+                      {
+                        "itemId": "645a868eef45797fca900cc0",
+                        "title": "Effective Differentiation for Students with Autism Spectrum Disorders ClusterNumber7"
+                      },
+                      {
+                        "itemId": "645a868ea39a294b2f548575",
+                        "title": "Strategies for Supporting Students with Anxiety in the Classroom ClusterNumber7"
+                      },
+                      {
+                        "itemId": "645a868e4b9dfb73b63ca44c",
+                        "title": "Supporting Students with Autism in the Classroom ClusterNumber7"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recommendation/recompute-content-similarity": {
+      "get": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "Recompute Content Similarity",
+        "description": "Recompute the content based similarities using node-similarity algorithm",
+        "operationId": "recomputeContentSimilarity",
+        "responses": {
+          "200": {
+            "description": "Success response indicating that content similarity has been recomputed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Content Similarity Recomputed Successfully"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recommendation/get-item-page-recommendations": {
+      "post": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "Get Item Page Recommendations",
+        "description": "Get a list of recommended items which are similar to a selected item",
+        "operationId": "getItemPageRecommendations",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "itemId": {
+                    "type": "string",
+                    "example": "645a868ea39a294b2f548575"
+                  }
+                }
+              },
+              "example": {
+                "itemId": "645a868ea39a294b2f548575"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Item Page Recommendations Fetched",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "description": "Status of the response.",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A message describing the status of the response.",
+                      "example": "Item Page Recommendations Fetched"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "itemId": {
+                            "type": "string",
+                            "description": "ID of the item.",
+                            "example": "645a868e55ae998e9e01288a"
+                          },
+                          "title": {
+                            "type": "string",
+                            "description": "Title of the item.",
+                            "example": "Strategies for Supporting Students with Behavioral Challenges ClusterNumber3"
+                          }
+                        }
+                      },
+                      "example": [
+                        {
+                          "itemId": "645a868e55ae998e9e01288a",
+                          "title": "Strategies for Supporting Students with Behavioral Challenges ClusterNumber3"
+                        },
+                        {
+                          "itemId": "645a868e4b9dfb73b63ca44c",
+                          "title": "Supporting Students with Autism in the Classroom ClusterNumber7"
+                        },
+                        {
+                          "itemId": "645a868ee10b8ea4ba7ee00c",
+                          "title": "Effective Classroom Management for Students with Anxiety ClusterNumber6"
+                        },
+                        {
+                          "itemId": "645a868e6e7ec1d4955bb4b5",
+                          "title": "Supporting Students with Depression in the Classroom ClusterNumber1"
+                        },
+                        {
+                          "itemId": "645a868ee6d0d28d4ad3104e",
+                          "title": "Supporting Students with Dyscalculia in the Classroom ClusterNumber9"
+                        },
+                        {
+                          "itemId": "645a868eb607cba4799038ef",
+                          "title": "Supporting Students with ADHD in the Virtual Classroom ClusterNumber9"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recommendation/get-profile-page-recommendations": {
+      "post": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "Get Profile Page Recommendations",
+        "description": "Get a list of items which are similar to items which the user rated previously",
+        "operationId": "getProfilePageRecommendations",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string",
+                    "example": "645a868e05ed75e9975a0aa3"
+                  }
+                }
+              },
+              "example": {
+                "userId": "645a868e05ed75e9975a0aa3"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Profile page recommendations fetched successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "description": "Indicates whether the request was successful or not."
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A message describing the outcome of the request."
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "itemId": {
+                            "type": "string",
+                            "description": "The unique identifier of the recommended item."
+                          },
+                          "title": {
+                            "type": "string",
+                            "description": "The title of the recommended item."
+                          },
+                          "score": {
+                            "type": "number",
+                            "format": "float",
+                            "description": "The score indicating how well the recommended item matches the user's preferences."
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "status": true,
+                  "message": "Profile Page Recommendations Fetched",
+                  "data": [
+                    {
+                      "itemId": "645a868eef40453a73c3b2f9",
+                      "title": "Effective Strategies for Classroom Discipline ClusterNumber2",
+                      "score": 1.625
+                    },
+                    {
+                      "itemId": "645a868e8dce646d34611481",
+                      "title": "Effective Classroom Management for Remote Learning ClusterNumber10",
+                      "score": 1.525
+                    },
+                    {
+                      "itemId": "645a868e09d47ec3875d70a1",
+                      "title": "Making the Most of Classroom Technology ClusterNumber2",
+                      "score": 1.525
+                    },
+                    {
+                      "itemId": "645a868e10b5934aa265c41a",
+                      "title": "Making the Most of Classroom Libraries ClusterNumber6",
+                      "score": 1.525
+                    },
+                    {
+                      "itemId": "645a868e31d8251630e58a9a",
+                      "title": "Collaborative Learning in the Classroom ClusterNumber6",
+                      "score": 1.525
+                    },
+                    {
+                      "itemId": "645a868e542b0e2567d12fc4",
+                      "title": "Promoting Social Emotional Learning in the Classroom ClusterNumber2",
+                      "score": 1.525
+                    },
+                    {
+                      "itemId": "645a868ed2b024f3fbf284b8",
+                      "title": "Differentiated Instruction for Students with Chronic Illnesses ClusterNumber8",
+                      "score": 1.25
+                    },
+                    {
+                      "itemId": "645a868eae132211d46ba383",
+                      "title": "Differentiated Instruction for Students with Giftedness ClusterNumber7",
+                      "score": 1.25
+                    },
+                    {
+                      "itemId": "645a868e42be65b605a66962",
+                      "title": "Differentiated Instruction for Students with Emotional Disturbance ClusterNumber2",
+                      "score": 1.25
+                    },
+                    {
+                      "itemId": "645a868e8fd03d56f2f579ac",
+                      "title": "Differentiated Instruction for Students with Trauma ClusterNumber1",
+                      "score": 1.25
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recommendation/recompute-pagerank": {
+      "get": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "Recompute PageRank",
+        "description": "Recompute pageRank values for Topic nodes in the Neo4j graph database",
+        "operationId": "recomputePagerank",
+        "responses": {
+          "200": {
+            "description": "PageRank computation was successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "description": "Indicates whether the computation was successful (true) or not (false)",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A message describing the result of the computation",
+                      "example": "PageRank Computed Successfully"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recommendation/trigger-auto-search": {
+      "get": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "Start or stop the auto-search process",
+        "description": "Start or stop the auto-search process",
+        "parameters": [
+          {
+            "name": "command",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "start",
+                "stop"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "AutoSearch command received successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "start": {
+                    "value": {
+                      "status": true,
+                      "message": "AutoSearch Command Received Successfully",
+                      "data": "Auto-Search Started"
+                    }
+                  },
+                  "stop": {
+                    "value": {
+                      "status": true,
+                      "message": "AutoSearch Command Received Successfully",
+                      "data": "Auto-Search Stopped"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recommendation/delete-all-nodes": {
+      "get": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "Delete All Nodes",
+        "description": "Delete all the nodes in the graph database",
+        "operationId": "deleteAllNodes",
+        "responses": {
+          "200": {
+            "description": "All nodes deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "description": "Indicates if the operation was successful or not",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "A message that describes the outcome of the operation",
+                      "example": "All Nodes Deleted"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "Object containing details about the nodes and relationships deleted",
+                      "properties": {
+                        "nodesDeleted": {
+                          "type": "integer",
+                          "description": "The number of nodes deleted",
+                          "example": 645
+                        },
+                        "relationshipsDeleted": {
+                          "type": "integer",
+                          "description": "The number of relationships deleted",
+                          "example": 6735
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Recommendation"
+    }
+  ]
+}

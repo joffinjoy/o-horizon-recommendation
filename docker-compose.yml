@@ -1,0 +1,35 @@
+version: '3'
+services:
+  neo4j:
+    container_name: o-horizon-neo4j
+    image: 'neo4j:latest'
+    ports:
+      - '7474:7474'
+      - '7687:7687'
+    environment:
+      - NEO4J_AUTH=none
+      - NEO4J_PLUGINS=["graph-data-science"]
+      - NEO4J_dbms_security_procedures_unrestricted=gds.*
+      - NEO4J_dbms_security_procedures_allowlist=gds.* 
+    volumes:
+      - neo4j-data:/data
+    networks:
+      - o-horizon_net
+  o-horizon-recommendation:
+    build: './'
+    container_name: o-horizon-recommendation
+    image: o-horizon/recommendation:1.0
+    volumes:
+      - ./src/:/var/src
+    ports:
+      - '3020:3020'
+    command: [ 'nodemon','app.js' ]
+    depends_on:
+      - neo4j
+    networks:
+      - o-horizon_net
+networks:
+  o-horizon_net:
+    external: false
+volumes:
+  neo4j-data:

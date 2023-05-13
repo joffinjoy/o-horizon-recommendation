@@ -1,0 +1,315 @@
+{
+	"info": {
+		"_postman_id": "fd887b2a-fa87-4015-b77c-aaa1f168aa08",
+		"name": "Graphversation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13427084"
+	},
+	"item": [
+		{
+			"name": "recommendation",
+			"item": [
+				{
+					"name": "Add User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"645a85062b761cd3326d21d3\",\n    \"email\": \"joffin@domain.com\",\n    \"phone\": \"9895480000\",\n    \"name\": \"Joffin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3020/recommendation/add-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"recommendation",
+								"add-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"payload\": {\n        \"item\": {\n            \"id\": \"645a857172060d45dc483e61\",\n            \"title\": \"Guide On School Infrastructure Development\"\n        },\n        \"categories\": [\n            {\n                \"id\": \"645a858cac6cad8d2ddb89d1\",\n                \"name\": \"Infrastructure Management\"\n            }\n        ],\n        \"mentor\": {\n            \"id\": \"645a855e9d9aecf7ff9f5eff\",\n            \"name\": \"Joffin\"\n        },\n        \"provider\": {\n            \"id\": \"645a8566cf956ed031352be1\",\n            \"name\": \"ShikshaLokam\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3020/recommendation/add-item",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"recommendation",
+								"add-item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Rating",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"645a85062b761cd3326d21d3\",\n    \"itemId\": \"645a857172060d45dc483e61\",\n    \"rating\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3020/recommendation/add-rating",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"recommendation",
+								"add-rating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Email Ids",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3020/recommendation/get-user-emails",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"recommendation",
+								"get-user-emails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recompute Collaborative Similarity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3020/recommendation/recompute-collaborative-similarity",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"recommendation",
+								"recompute-collaborative-similarity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get collaborative Recommendations",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\":\"645a30763153bfd734ceebb0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3020/recommendation/get-collaborative-recommendations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"recommendation",
+								"get-collaborative-recommendations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recompute Content Similarity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3020/recommendation/recompute-content-similarity",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"recommendation",
+								"recompute-content-similarity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Item Page Recommendations",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"itemId\":\"643d59fba8cc31fe6f25bc52\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3020/recommendation/get-item-page-recommendations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"recommendation",
+								"get-item-page-recommendations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile Page Recommendations",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\":\"645a868e05ed75e9975a0aa3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3020/recommendation/get-profile-page-recommendations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"recommendation",
+								"get-profile-page-recommendations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recompute PageRank",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3020/recommendation/recompute-pagerank",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"recommendation",
+								"recompute-pagerank"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trigger AutoSearch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3020/recommendation/trigger-auto-search?command=start",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"recommendation",
+								"trigger-auto-search"
+							],
+							"query": [
+								{
+									"key": "command",
+									"value": "start"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Nodes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3020/recommendation/delete-all-nodes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"recommendation",
+								"delete-all-nodes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
