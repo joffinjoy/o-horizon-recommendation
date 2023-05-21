@@ -37,6 +37,8 @@ This repository serves as the reference for the SL O-Horizon Recommendation Engi
 
     **GDS Algorithms used:** [PageRank](https://neo4j.com/docs/graph-data-science/current/algorithms/page-rank/) & [Node Similarity](https://neo4j.com/docs/graph-data-science/current/algorithms/node-similarity/)
 
+    **Note:** Since "Smart Auto-Search" wasn't mentioned during the Graphversation Episode, use this article as the reference for the **working**, **architecture** & **feature walkthrough**: [**Leveraging “Smart Auto-Search” On O-Horizon Recommendation Engine**](https://medium.com/@joffinjoy/leveraging-smart-auto-search-on-o-horizon-recommendation-engine-def51a19399)
+
 ## Additional Features
 
 -   **Synthetic data generation scripts:** The dataset demonstrated during Graphversation can be generated with a single command.
